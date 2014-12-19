@@ -1,19 +1,19 @@
 --- 
-title       : Tooth Growth Explorer
+title       : Tooth Growth 
 subtitle    : Some Exploratory Analysis
 author      : Pilar Liria
 job         : 
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
-widgets     : [ggplot2, psych, datasets, xtable, RColorBrewer]  
-ext_widgets : {rCharts: ["libraries/nvd3"]} 
+widgets     : [ggplot2, psych, datasets, reshape, xtable, RColorBrewer]  
+ext_widgets : {rCharts: libraries/nvd3} 
 mode        : selfcontained # {standalone, draft}
 --- 
 
 ## Introduction
 
-This document analyzes the **ToothGrowth** data in the R datasets pacakage. The goal of  this report is to show the effect of vitamina C on Tooth Growth in Guinea Pigs. 
+This document analyzes the **ToothGrowth** data in the R datasets pacakage. The goal of  this report is to show the effect of vitamina C on Tooth Growth in guinea pigs. 
 
 The document includes multiBarchar (instead of Boxplot)  and some summary reports related with the data. 
 
@@ -29,9 +29,7 @@ The data **ToothGrowth**, consists in 60 observations of 3 variables. The variab
 
 ### MultiBarChart: Tooth Length and the Effect of Vitamin C
 
-<iframe src=' assets/fig/unnamed-chunk-1-1.html ' scrolling='no' frameBorder='0' seamless class='rChart nvd3 ' id=iframe- chart16205fdd20e2 ></iframe> <style>iframe.rChart{ width: 100%; height: 400px;}</style>
-
-The graph shows some kind of trend. It looks like as the dose is increased , the tooth length is bigger. When the dose is 0.5 miligrams or 1 miligrams, the length of the tooth with supplement OJ looks like biger. However if the supplement is 2.0 miligrams, occurs the contrary. 
+<iframe src="n1.html" width=75%, height=400></iframe>
 
 ---
 
@@ -76,4 +74,8 @@ The graph shows some kind of trend. It looks like as the dose is increased , the
   <tr> <td align="right"> 6 </td> <td> Max.   :33.90   </td> <td>  </td> <td> Max.   :2.000   </td> </tr>
    </table>
 
+
+### Conclusions
+
+The graph in the slideshows some kind of trend. It looks like as the dose is increased , the tooth length is bigger. When the dose is 0.5 miligrams or 1 miligrams, the length of the tooth with OJ supplement  looks  biger. However if the supplement is 2.0 miligrams, the contrary occurs. 
 
