@@ -7,7 +7,7 @@ framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
 widgets     : [ggplot2, psych, datasets, reshape, xtable, RColorBrewer]  
-ext_widgets : {rCharts: libraries/nvd3} 
+ext_widgets : {rCharts: ["libraries/nvd3", "libraries/highlights"]} 
 mode        : selfcontained # {standalone, draft}
 --- 
 
@@ -29,7 +29,394 @@ The data **ToothGrowth**, consists in 60 observations of 3 variables. The variab
 
 ### MultiBarChart: Tooth Length and the Effect of Vitamin C
 
-<iframe src="n1.html" width=75%, height=400></iframe>
+<link rel='stylesheet' href=http://nvd3.org/assets/css/nv.d3.css>
+<script type='text/javascript' src=http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js></script>
+<script type='text/javascript' src=http://d3js.org/d3.v3.min.js></script>
+<script type='text/javascript' src=http://timelyportfolio.github.io/rCharts_nvd3_tests/libraries/widgets/nvd3/js/nv.d3.min-new.js></script>
+<script type='text/javascript' src=http://nvd3.org/assets/lib/fisheye.js></script> 
+ <style>
+  .rChart {
+    display: block;
+    margin-left: auto; 
+    margin-right: auto;
+    width: 800px;
+    height: 400px;
+  }  
+  </style>
+<div id = 'chart1' class = 'rChart nvd3'></div>
+<script type='text/javascript'>
+ $(document).ready(function(){
+      drawchart1()
+    });
+    function drawchart1(){  
+      var opts = {
+ "dom": "chart1",
+"width":    800,
+"height":    400,
+"x": "dose",
+"y": "len",
+"group": "supp",
+"type": "multiBarChart",
+"id": "chart1" 
+},
+        data = [
+ {
+ "len":            4.2,
+"supp": "VC",
+"dose":            0.5 
+},
+{
+ "len":           11.5,
+"supp": "VC",
+"dose":            0.5 
+},
+{
+ "len":            7.3,
+"supp": "VC",
+"dose":            0.5 
+},
+{
+ "len":            5.8,
+"supp": "VC",
+"dose":            0.5 
+},
+{
+ "len":            6.4,
+"supp": "VC",
+"dose":            0.5 
+},
+{
+ "len":             10,
+"supp": "VC",
+"dose":            0.5 
+},
+{
+ "len":           11.2,
+"supp": "VC",
+"dose":            0.5 
+},
+{
+ "len":           11.2,
+"supp": "VC",
+"dose":            0.5 
+},
+{
+ "len":            5.2,
+"supp": "VC",
+"dose":            0.5 
+},
+{
+ "len":              7,
+"supp": "VC",
+"dose":            0.5 
+},
+{
+ "len":           16.5,
+"supp": "VC",
+"dose":              1 
+},
+{
+ "len":           16.5,
+"supp": "VC",
+"dose":              1 
+},
+{
+ "len":           15.2,
+"supp": "VC",
+"dose":              1 
+},
+{
+ "len":           17.3,
+"supp": "VC",
+"dose":              1 
+},
+{
+ "len":           22.5,
+"supp": "VC",
+"dose":              1 
+},
+{
+ "len":           17.3,
+"supp": "VC",
+"dose":              1 
+},
+{
+ "len":           13.6,
+"supp": "VC",
+"dose":              1 
+},
+{
+ "len":           14.5,
+"supp": "VC",
+"dose":              1 
+},
+{
+ "len":           18.8,
+"supp": "VC",
+"dose":              1 
+},
+{
+ "len":           15.5,
+"supp": "VC",
+"dose":              1 
+},
+{
+ "len":           23.6,
+"supp": "VC",
+"dose":              2 
+},
+{
+ "len":           18.5,
+"supp": "VC",
+"dose":              2 
+},
+{
+ "len":           33.9,
+"supp": "VC",
+"dose":              2 
+},
+{
+ "len":           25.5,
+"supp": "VC",
+"dose":              2 
+},
+{
+ "len":           26.4,
+"supp": "VC",
+"dose":              2 
+},
+{
+ "len":           32.5,
+"supp": "VC",
+"dose":              2 
+},
+{
+ "len":           26.7,
+"supp": "VC",
+"dose":              2 
+},
+{
+ "len":           21.5,
+"supp": "VC",
+"dose":              2 
+},
+{
+ "len":           23.3,
+"supp": "VC",
+"dose":              2 
+},
+{
+ "len":           29.5,
+"supp": "VC",
+"dose":              2 
+},
+{
+ "len":           15.2,
+"supp": "OJ",
+"dose":            0.5 
+},
+{
+ "len":           21.5,
+"supp": "OJ",
+"dose":            0.5 
+},
+{
+ "len":           17.6,
+"supp": "OJ",
+"dose":            0.5 
+},
+{
+ "len":            9.7,
+"supp": "OJ",
+"dose":            0.5 
+},
+{
+ "len":           14.5,
+"supp": "OJ",
+"dose":            0.5 
+},
+{
+ "len":             10,
+"supp": "OJ",
+"dose":            0.5 
+},
+{
+ "len":            8.2,
+"supp": "OJ",
+"dose":            0.5 
+},
+{
+ "len":            9.4,
+"supp": "OJ",
+"dose":            0.5 
+},
+{
+ "len":           16.5,
+"supp": "OJ",
+"dose":            0.5 
+},
+{
+ "len":            9.7,
+"supp": "OJ",
+"dose":            0.5 
+},
+{
+ "len":           19.7,
+"supp": "OJ",
+"dose":              1 
+},
+{
+ "len":           23.3,
+"supp": "OJ",
+"dose":              1 
+},
+{
+ "len":           23.6,
+"supp": "OJ",
+"dose":              1 
+},
+{
+ "len":           26.4,
+"supp": "OJ",
+"dose":              1 
+},
+{
+ "len":             20,
+"supp": "OJ",
+"dose":              1 
+},
+{
+ "len":           25.2,
+"supp": "OJ",
+"dose":              1 
+},
+{
+ "len":           25.8,
+"supp": "OJ",
+"dose":              1 
+},
+{
+ "len":           21.2,
+"supp": "OJ",
+"dose":              1 
+},
+{
+ "len":           14.5,
+"supp": "OJ",
+"dose":              1 
+},
+{
+ "len":           27.3,
+"supp": "OJ",
+"dose":              1 
+},
+{
+ "len":           25.5,
+"supp": "OJ",
+"dose":              2 
+},
+{
+ "len":           26.4,
+"supp": "OJ",
+"dose":              2 
+},
+{
+ "len":           22.4,
+"supp": "OJ",
+"dose":              2 
+},
+{
+ "len":           24.5,
+"supp": "OJ",
+"dose":              2 
+},
+{
+ "len":           24.8,
+"supp": "OJ",
+"dose":              2 
+},
+{
+ "len":           30.9,
+"supp": "OJ",
+"dose":              2 
+},
+{
+ "len":           26.4,
+"supp": "OJ",
+"dose":              2 
+},
+{
+ "len":           27.3,
+"supp": "OJ",
+"dose":              2 
+},
+{
+ "len":           29.4,
+"supp": "OJ",
+"dose":              2 
+},
+{
+ "len":             23,
+"supp": "OJ",
+"dose":              2 
+} 
+]
+  
+      if(!(opts.type==="pieChart" || opts.type==="sparklinePlus" || opts.type==="bulletChart")) {
+        var data = d3.nest()
+          .key(function(d){
+            //return opts.group === undefined ? 'main' : d[opts.group]
+            //instead of main would think a better default is opts.x
+            return opts.group === undefined ? opts.y : d[opts.group];
+          })
+          .entries(data);
+      }
+      
+      if (opts.disabled != undefined){
+        data.map(function(d, i){
+          d.disabled = opts.disabled[i]
+        })
+      }
+      
+      nv.addGraph(function() {
+        var chart = nv.models[opts.type]()
+          .width(opts.width)
+          .height(opts.height)
+          
+        if (opts.type != "bulletChart"){
+          chart
+            .x(function(d) { return d[opts.x] })
+            .y(function(d) { return d[opts.y] })
+        }
+          
+         
+        chart
+  .margin({
+ "left":    100 
+})
+  .reduceXTicks(false)
+  .color([ "orange", "lightblue" ])
+          
+        chart.xAxis
+  .staggerLabels(true)
+  .axisLabel("Dose")
+
+        
+        
+        chart.yAxis
+  .axisLabel("Tooth Length")
+      
+       d3.select("#" + opts.id)
+        .append('svg')
+        .datum(data)
+        .transition().duration(500)
+        .call(chart);
+
+       nv.utils.windowResize(chart.update);
+       return chart;
+      });
+    };
+</script>
 
 ---
 
@@ -77,5 +464,5 @@ The data **ToothGrowth**, consists in 60 observations of 3 variables. The variab
 
 ### Conclusions
 
-The graph in the slideshows some kind of trend. It looks like as the dose is increased , the tooth length is bigger. When the dose is 0.5 miligrams or 1 miligrams, the length of the tooth with OJ supplement  looks  biger. However if the supplement is 2.0 miligrams, the contrary occurs. 
+The graph in the slide 3 shows some kind of trend. It looks like as the dose is increased , the tooth length is bigger. When the dose is 0.5 miligrams or 1 miligrams, the length of the tooth with OJ supplement  looks  biger. However if the supplement is 2.0 miligrams, the contrary occurs. 
 
