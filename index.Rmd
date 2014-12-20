@@ -6,8 +6,8 @@ job         :
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
-widgets     : [ggplot2, psych, datasets, xtable, RColorBrewer]  
-ext_widgets : {rCharts: libraries/nvd3} 
+widgets     : [ggplot2, psych, datasets, reshape, xtable, RColorBrewer]  
+ext_widgets : {rCharts: ["libraries/nvd3", "libraries/highlights"]} 
 mode        : selfcontained # {standalone, draft}
 --- 
 
@@ -29,7 +29,7 @@ The data **ToothGrowth**, consists in 60 observations of 3 variables. The variab
 
 ### MultiBarChart: Tooth Length and the Effect of Vitamin C
 
-```{r  echo=FALSE, results = 'asis', comment=NA, message=FALSE}
+```{r  echo=TRUE, results = 'asis'}
 require(rCharts)
 ToGr = as.data.frame(ToothGrowth)
 n1 <- nPlot(len ~ dose, group = 'supp', type = 'multiBarChart',
@@ -40,18 +40,18 @@ n1$xAxis(staggerLabels = TRUE)
 n1$xAxis(axisLabel = 'Dose')
 n1$yAxis(axisLabel = "Tooth Length")
 n1$chart(color = c('orange', 'lightblue'))
-n1$set(width = 500)
-#n1$save('n1.html', cdn=TRUE)
-n1
+## n1$set(width = 400)
+n1$save('n1.html', cdn=TRUE)
+n1$print("chart1", include_assets=TRUE, cdn=TRUE)
+##cat('<iframe src="n1.html" width=75%, height=400></iframe>')
+#n1
 ```
-
-The graph shows some kind of trend. It looks like as the dose is increased , the tooth length is bigger. When the dose is 0.5 miligrams or 1 miligrams, the length of the tooth with OJ supplement  looks  biger. However if the supplement is 2.0 miligrams, the contrary occurs. 
 
 ---
 
 ### Summary: describeBy
 
-```{r echo=F, results = 'asis'}
+```{r echo=TRUE, results = 'asis'}
 
     # dB<- describeBy(ToGr$len, group=ToGr$supp, mat=TRUE, digits=2)
     dB<- describeBy(ToGr$len, list(ToGr$supp, ToGr$dose), mat=TRUE, digits=2)
@@ -71,4 +71,7 @@ The graph shows some kind of trend. It looks like as the dose is increased , the
 ```
 
 
+### Conclusions
+
+The graph in the slide 3 shows some kind of trend. It looks like as the dose is increased , the tooth length is bigger. When the dose is 0.5 miligrams or 1 miligrams, the length of the tooth with OJ supplement  looks  biger. However if the supplement is 2.0 miligrams, the contrary occurs. 
 
