@@ -1,0 +1,21 @@
+---
+title: "Readme"
+author: "Pilar"
+date: "Saturday, December 20, 2014"
+output: html_document
+---
+
+# Developing-Data-Products-Assignment
+
+Coursera Course: Developing Data Products
+
+Assignment Submission Files
+index.Rmd
+index.md
+index.html
+README.md
+
+## Presentation
+
+You will see the presentation in https://mapilido74.github.io/DDP_Pro_Part2/index.html
+

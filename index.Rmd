@@ -47,11 +47,13 @@ n1$print("chart1", include_assets=TRUE, cdn=TRUE)
 #n1
 ```
 
+The graph in the slide 3 shows some kind of trend. It looks like as the dose is increased , the tooth length is bigger. When the dose is 0.5 miligrams or 1 miligrams, the length of the tooth with OJ supplement  looks  biger. However if the supplement is 2.0 miligrams, the contrary occurs. 
+
 ---
 
 ### Summary: describeBy
 
-```{r echo=F, results = 'asis'}
+```{r echo=FALSE, results = 'asis'}
 
     # dB<- describeBy(ToGr$len, group=ToGr$supp, mat=TRUE, digits=2)
     dB<- describeBy(ToGr$len, list(ToGr$supp, ToGr$dose), mat=TRUE, digits=2)
@@ -65,13 +67,10 @@ n1$print("chart1", include_assets=TRUE, cdn=TRUE)
 
 ### Summary: summary
 
-```{r echo=F, results = 'asis'}
+```{r echo=FALSE, results = 'asis'}
     su<-summary(ToGr)
     print(xtable(su), type="html")
 ```
 
 
-### Conclusions
-
-The graph in the slide 3 shows some kind of trend. It looks like as the dose is increased , the tooth length is bigger. When the dose is 0.5 miligrams or 1 miligrams, the length of the tooth with OJ supplement  looks  biger. However if the supplement is 2.0 miligrams, the contrary occurs. 
 
