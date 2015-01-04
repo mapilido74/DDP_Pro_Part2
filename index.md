@@ -423,7 +423,7 @@ The data **ToothGrowth** in R package, consists in 60 observations of 3 variable
     };
 </script>
 
-The graph shows some kind of trend. It looks like as the dose is increased , the tooth length is bigger. When the dose is 0.5 miligrams or 1 miligrams, the length of the tooth with OJ supplement  looks  bigger. However if the supplement is 2.0 miligrams, the contrary occurs.
+The graph shows some kind of trend. It looks like as the dose is increased , the tooth length is bigger. When the dose is 0.5 miligrams or 1 miligrams, the tooth length with OJ supplement looks  bigger. However if the supplement is 2.0 miligrams, the contrary occurs.
 
 --- 
 
@@ -461,8 +461,7 @@ This table shows general statistics
   <tr> <td align="right"> 6 </td> <td> Max.   :33.90   </td> <td>  </td> <td> Max.   :2.000   </td> </tr>
    </table>
 
-
 ## Conclusions
 
-The next step (not in this presentation) is to apply different techniques to verify if these differences in length are real!! (hypothesis testing, confidence intervals, .. ).  In addition we need to verify that the data meet the requirements to apply these techniques. 
+The next step (not in this presentation) is to apply different techniques to verify if these differences in length are real!! (hypothesis testing, confidence intervals, .. ). In addition we need to verify that the data meet the requirements to apply these techniques. 
 
