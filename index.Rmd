@@ -3,69 +3,75 @@ title       : Tooth Growth
 subtitle    : Some Exploratory Analysis
 author      : Pilar Liria
 job         : 
-framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
-highlighter : highlight.js  # {highlight.js, prettify, highlight}
-hitheme     : tomorrow      # 
+framework   : io2012        
+highlighter : highlight.js 
+hitheme     : tomorrow      
 widgets     : [ggplot2, psych, datasets, reshape, xtable, RColorBrewer]  
 ext_widgets : {rCharts: ["libraries/nvd3", "libraries/highlights"]} 
 mode        : selfcontained # {standalone, draft}
---- 
 
-## Introduction
+--- .outfont
 
-This document analyzes the **ToothGrowth** data in the R datasets pacakage. The goal of  this report is to show the effect of vitamina C on Tooth Growth in guinea pigs. 
+## Introduction 
 
-The document includes multiBarchar (instead of Boxplot)  and some summary reports related with the data. 
+The issue is to answer the next question: Vitamin C affects the growth of teeth?
+
+The shiny app allows the user to choose some information as dose or supp or both and obtain the boxplot which describes the behaviour of the tooth length under these variables.  In addition the user can choose the option which describes general  statistics or statistitics of the length of the tooth (len) grouped by the doses and the way in which the supplement was administered (supp).
+
+The shiny app is in: "https://mapilido74.shinyapps.io/ProjectFinal/".
+
+Also in this presentation I show an interactive plot which related the 3 variables in study (len, dose and supp).
 
 ## Data
 
-The data **ToothGrowth**, consists in 60 observations of 3 variables. The variables are:
+The data **ToothGrowth** in R package, consists in 60 observations of 3 variables related with guinea pigs and the growth of its tooth under the incluence of Vitamin C:
 
 1. *len* which is tooth length (it is the *response variable*)
 2. *supp* is the way in which the supplement was administered. The levels are *OJ (as orange juice)*, and *VC (as ascorbic acid)*.
-3. *dose* of the supplement in miligrams (0.5, 1.0, and 2.0)
+3. *dose* of the supplement in miligrams (0.5, 1.0, and 2.0). 
 
----
+--- 
 
-### MultiBarChart: Tooth Length and the Effect of Vitamin C
+### Processig Data: Tooth Length and the Effect of Vitamin C
 
 ```{r  echo=FALSE, results = 'asis'}
 require(rCharts)
 ToGr = as.data.frame(ToothGrowth)
-n1 <- nPlot(len ~ dose, group = 'supp', type = 'multiBarChart',
-  data = ToGr)
+ToGr$dose<-factor(ToGr$dose)
+n1 <- nPlot(len~ dose, group = 'supp', type = 'multiBarChart',
+data = ToGr)
 n1$chart(margin = list(left = 100))
 n1$chart(reduceXTicks = FALSE)
 n1$xAxis(staggerLabels = TRUE)
 n1$xAxis(axisLabel = 'Dose')
 n1$yAxis(axisLabel = "Tooth Length")
 n1$chart(color = c('orange', 'lightblue'))
-## n1$set(width = 400)
 n1$save('n1.html', cdn=TRUE)
 n1$print("chart1", include_assets=TRUE, cdn=TRUE)
-##cat('<iframe src="n1.html" width=75%, height=400></iframe>')
-#n1
 ```
 
-The graph in the slide 3 shows some kind of trend. It looks like as the dose is increased , the tooth length is bigger. When the dose is 0.5 miligrams or 1 miligrams, the length of the tooth with OJ supplement  looks  biger. However if the supplement is 2.0 miligrams, the contrary occurs. 
+The graph shows some kind of trend. It looks like as the dose is increased , the tooth length is bigger. When the dose is 0.5 miligrams or 1 miligrams, the length of the tooth with OJ supplement  looks  bigger. However if the supplement is 2.0 miligrams, the contrary occurs.
 
----
+--- 
 
-### Summary: describeBy
+### Summary Data: describeBy
 
 ```{r echo=FALSE, results = 'asis'}
-
-    # dB<- describeBy(ToGr$len, group=ToGr$supp, mat=TRUE, digits=2)
-    dB<- describeBy(ToGr$len, list(ToGr$supp, ToGr$dose), mat=TRUE, digits=2)
-    dB1<-dB[, 1:8]
-    print(xtable(dB1), type="html")
-    dB2<-dB[, 9:15]
-    print(xtable(dB2), type="html")
+    require(psych)
+    dB<- describeBy(ToGr$len, group=list(ToGr$dose, ToGr$supp), mat=TRUE, digits=2)[, 1:8]
+    ## dB1<-dB[, 1:8]
+    print(xtable(dB), type="html")
+    ## dB2<-dB[, 9:15]
+    ## print(xtable(dB2), type="html")
 ```
+
+The table above shows that the length of the tooth in the case of 0.5 mg. and 1 mg. doses is bigger if the way that the supplement is taken is orange juice. However if the dose is 2 mg, the difference between acid ascorbic and orange juice is not as bigger as before. 
 
 ---
 
-### Summary: summary
+### Summary Data: summary
+
+This table shows general statistics
 
 ```{r echo=FALSE, results = 'asis'}
     su<-summary(ToGr)
@@ -73,4 +79,7 @@ The graph in the slide 3 shows some kind of trend. It looks like as the dose is 
 ```
 
 
+## Conclusions
+
+The next step (not in this presentation) is to apply different techniques to verify if these differences in length are real!! (hypothesis testing, confidence intervals, .. ).  In addition we need to verify that the data meet the requirements to apply these techniques. 
 
